@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	pb "github.com/EwanValentine/shippy/consignment-service/proto/consignment"
+	pb "github.com/hitxiang/shippy/consignment-service/proto/consignment"
 	microclient "github.com/micro/go-micro/client"
 	"github.com/micro/go-micro/cmd"
 	"github.com/micro/go-micro/metadata"

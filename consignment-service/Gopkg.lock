@@ -3,7 +3,7 @@
 
 [[projects]]
   branch = "master"
-  name = "github.com/EwanValentine/shippy"
+  name = "github.com/hitxiang/shippy"
   packages = ["user-service/proto/user","vessel-service/proto/vessel"]
   revision = "6f3e75c4690f5586f0d0674e18dc2e5f9c148a48"
 

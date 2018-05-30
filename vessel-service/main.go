@@ -6,7 +6,7 @@ import (
 
 	"os"
 
-	pb "github.com/EwanValentine/shippy/vessel-service/proto/vessel"
+	pb "github.com/hitxiang/shippy/vessel-service/proto/vessel"
 	"github.com/micro/go-micro"
 )
 

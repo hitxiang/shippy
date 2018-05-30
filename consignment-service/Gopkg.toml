@@ -22,7 +22,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/EwanValentine/shippy"
+  name = "github.com/hitxiang/shippy"
 
 [[constraint]]
   branch = "master"

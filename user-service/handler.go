@@ -4,7 +4,7 @@ import (
 	"errors"
 	"log"
 
-	pb "github.com/EwanValentine/shippy/user-service/proto/user"
+	pb "github.com/hitxiang/shippy/user-service/proto/user"
 	"golang.org/x/crypto/bcrypt"
 	"golang.org/x/net/context"
 )

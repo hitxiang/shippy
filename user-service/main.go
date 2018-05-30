@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	pb "github.com/EwanValentine/shippy/user-service/proto/user"
+	pb "github.com/hitxiang/shippy/user-service/proto/user"
 	"github.com/micro/go-micro"
 )
 

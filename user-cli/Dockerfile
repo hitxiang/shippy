@@ -1,6 +1,6 @@
 FROM golang:1.9.0 as builder
 
-WORKDIR /go/src/github.com/EwanValentine/shippy/user-cli
+WORKDIR /go/src/github.com/hitxiang/shippy/user-cli
 
 COPY . .
 
@@ -15,7 +15,7 @@ RUN apk --no-cache add ca-certificates
 
 RUN mkdir /app
 WORKDIR /app
-COPY --from=builder /go/src/github.com/EwanValentine/shippy/user-cli/user-cli .
+COPY --from=builder /go/src/github.com/hitxiang/shippy/user-cli/user-cli .
 
 ENTRYPOINT ["./user-cli"]
 
