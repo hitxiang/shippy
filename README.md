@@ -2,6 +2,17 @@
 
 This is the codebase for the multi-part series on writing microservices in Golang [found here](https://ewanvalentine.io/).
 
+## Run
+```
+docker-compose up
+docker run user-cli
+docker run consignment-cli <access-token>
+```
+
+## TODO
+```
+How to pass <access-token>
+```
 
 ## Table of contents (this may change as the series progresses)
 

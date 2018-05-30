@@ -42,6 +42,10 @@ func main() {
 		token = os.Args[2]
 	}
 
+	if len(token) == 0 {
+		log.Fatalf("Token is needed, use user-cli to get the token")
+	}
+	log.Printf("Using token: [%s]", token)
 	consignment, err := parseFile(file)
 
 	if err != nil {
