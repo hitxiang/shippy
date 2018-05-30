@@ -55,7 +55,7 @@ func main() {
 		micro.WrapHandler(AuthWrapper),
 	)
 
-	vesselClient := vesselProto.NewVesselServiceClient("go.micro.srv.vessel", srv.Client())
+	vesselClient := vesselProto.NewVesselService("go.micro.srv.vessel", srv.Client())
 
 	// Init will parse the command line flags.
 	srv.Init()
@@ -79,7 +79,7 @@ func AuthWrapper(fn server.HandlerFunc) server.HandlerFunc {
 		log.Println("Authenticating with token: ", token)
 
 		// Auth here
-		authClient := userService.NewUserServiceClient("go.micro.srv.user", client.DefaultClient)
+		authClient := userService.NewUserService("go.micro.srv.user", client.DefaultClient)
 		authResp, err := authClient.ValidateToken(ctx, &userService.Token{
 			Token: token,
 		})

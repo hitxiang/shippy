@@ -1,6 +1,7 @@
 build:
 	protoc --proto_path=. --go_out=. --micro_out=. \
 		proto/user/user.proto
+	GOOS=linux GOARCH=amd64 go build
 	docker build -t user-service .
 
 run:
