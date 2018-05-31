@@ -37,6 +37,7 @@ func main() {
 	// Contact the server and print out its response.
 	file := defaultFilename
 	var token string
+	log.Printf("Passed Args: %s", os.Args)
 	if len(os.Args) > 1 {
 		file = os.Args[1]
 		token = os.Args[2]
@@ -53,7 +54,7 @@ func main() {
 	}
 
 	ctx := metadata.NewContext(context.Background(), map[string]string{
-		"token": token,
+		"Token": token,
 	})
 
 	r, err := client.CreateConsignment(ctx, consignment)
