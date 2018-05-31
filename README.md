@@ -9,12 +9,6 @@ docker run user-cli
 docker run consignment-cli <access-token>
 ```
 
-## TODO
-```
-How to pass <access-token>
-Metadata with micro
-```
-
 ## Table of contents (this may change as the series progresses)
 
 1. Tutorial one - `$ git checkout tutorial-1` - Microservice basics, gRPC and protobuf basics.
