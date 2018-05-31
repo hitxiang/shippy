@@ -6,6 +6,9 @@ services:
     build: ./consignment-cli
     environment:
       MICRO_REGISTRY: "mdns"
+    volumes:
+      - ./consignment-cli/consignment.json:/app/consignment.json
+      - ./consignment-cli/consignment-cli:/app/consignment-cli
     depends_on:
       - consignment-service
 
@@ -13,6 +16,8 @@ services:
     build: ./user-cli
     environment:
       MICRO_REGISTRY: "mdns"
+    volumes:
+      - ./user-cli/user-cli:/app/user-cli
     depends_on:
       - user-service
 
@@ -24,6 +29,8 @@ services:
       MICRO_ADDRESS: ":50051"
       MICRO_REGISTRY: "mdns"
       DB_HOST: "datastore:27017"
+    volumes:
+      - ./consignment-servicecli/consignment-service:/app/consignment-service
     depends_on:
       - datastore
       - vessel-service
@@ -36,6 +43,8 @@ services:
       MICRO_ADDRESS: ":50051"
       MICRO_REGISTRY: "mdns"
       DB_HOST: "datastore:27017"
+    volumes:
+      - ./vessel-service/vessel-service:/app/vessel-service
     depends_on:
       - datastore
 
@@ -51,6 +60,8 @@ services:
       DB_PORT: "5432"
       DB_USER: "postgres"
       DB_PASSWORD: "postgres"
+    volumes:
+      - ./user-service/user-service:/app/user-service
     depends_on:
       - database
 
