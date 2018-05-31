@@ -78,6 +78,9 @@ func AuthWrapper(fn server.HandlerFunc) server.HandlerFunc {
 		token := meta["Token"]
 		log.Println("Authenticating with token: ", token)
 
+		if len(token) == 0 {
+			return errors.New("No token is provided")
+		}
 		// Auth here
 		authClient := userService.NewUserService("go.micro.srv.user", client.DefaultClient)
 		authResp, err := authClient.ValidateToken(ctx, &userService.Token{

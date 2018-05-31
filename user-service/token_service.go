@@ -1,8 +1,8 @@
 package main
 
 import (
-	pb "github.com/hitxiang/shippy/user-service/proto/user"
 	"github.com/dgrijalva/jwt-go"
+	pb "github.com/hitxiang/shippy/user-service/proto/user"
 )
 
 var (
@@ -36,6 +36,10 @@ func (srv *TokenService) Decode(token string) (*CustomClaims, error) {
 	tokenType, err := jwt.ParseWithClaims(string(key), &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return key, nil
 	})
+
+	if err != nil {
+		return nil, err
+	}
 
 	// Validate the token and return the custom claims
 	if claims, ok := tokenType.Claims.(*CustomClaims); ok && tokenType.Valid {
