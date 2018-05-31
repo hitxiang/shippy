@@ -12,6 +12,7 @@ docker run consignment-cli <access-token>
 ## TODO
 ```
 How to pass <access-token>
+Metadata with micro
 ```
 
 ## Table of contents (this may change as the series progresses)

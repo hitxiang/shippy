@@ -30,7 +30,7 @@ services:
       MICRO_REGISTRY: "mdns"
       DB_HOST: "datastore:27017"
     volumes:
-      - ./consignment-servicecli/consignment-service:/app/consignment-service
+      - ./consignment-service/consignment-service:/app/consignment-service
     depends_on:
       - datastore
       - vessel-service
