@@ -1,0 +1,35 @@
+package: github.com/hitxiang/shippy
+import:
+- package: github.com/dgrijalva/jwt-go
+  version: ^3.2.0
+- package: github.com/golang/protobuf
+  version: ^1.1.0
+  subpackages:
+  - proto
+- package: github.com/jinzhu/gorm
+  version: ^1.9.1
+  subpackages:
+  - dialects/postgres
+- package: github.com/micro/go-micro
+  version: ^0.8.0
+  subpackages:
+  - broker
+  - client
+  - cmd
+  - metadata
+  - server
+- package: github.com/micro/go-plugins
+  version: ^0.10.1
+  subpackages:
+  - broker/nats
+- package: github.com/satori/go.uuid
+  version: ^1.2.0
+- package: golang.org/x/crypto
+  subpackages:
+  - bcrypt
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: gopkg.in/mgo.v2
+  subpackages:
+  - bson

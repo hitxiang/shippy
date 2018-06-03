@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: greeter-cli
+  labels:    
+    service: greeter-cli
+spec:
+  type: LoadBalancer
+  ports:
+  - name: api-port
+    port: 8080
+    targetPort: "api-port"
+    protocol: TCP
+  selector:
+    app: greeter-cli

@@ -53,6 +53,17 @@ services:
       DB_PASSWORD: "postgres"
     depends_on:
       - database
+      - nats
+
+  email-service:
+    build: ./email-service
+    environment:
+      MICRO_ADDRESS: ":50051"
+      MICRO_REGISTRY: "mdns"
+      MICRO_BROKER: "nats"
+      MICRO_BROKER_ADDRESS: "nats:4222"
+    depends_on:
+      - nats
 
   datastore:
     image: mongo
@@ -63,3 +74,10 @@ services:
     image: postgres
     ports:
       - 5432:5432
+
+  nats:
+    image: nats
+    ports:
+      - 8222:8222
+      - 6222:6222
+      - 4222:4222

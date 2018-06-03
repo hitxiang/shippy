@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: greeter-cli
+  labels:
+    deployment: greeter-cli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greeter-cli
+  template:
+    metadata:
+      labels:
+        app: greeter-cli        
+    spec:
+      containers:
+      - name: greeter-cli
+        image: gcr.io/rugged-memory-205712/greeter-k8s-client:124
+        imagePullPolicy: Always
+        command: [
+          "./api",
+        ]
+        env:        
+        - name: MICRO_REGISTRY
+          value: "kubernetes"
+        - name: MICRO_SERVER_ADDRESS
+          value: 0.0.0.0:8080
+        ports:
+        - containerPort: 8080
+          name: api-port

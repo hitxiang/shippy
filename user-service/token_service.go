@@ -7,6 +7,8 @@ import (
 	pb "github.com/hitxiang/shippy/user-service/proto/user"
 )
 
+const topic = "user.created"
+
 var (
 	// Define a secure key string used
 	// as a salt when hashing our tokens.

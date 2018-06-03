@@ -1,10 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"log"
 
 	pb "github.com/hitxiang/shippy/user-service/proto/user"
+	"github.com/micro/go-micro/broker"
+	_ "github.com/micro/go-plugins/broker/nats"
 	"golang.org/x/crypto/bcrypt"
 	"golang.org/x/net/context"
 )
@@ -12,6 +15,7 @@ import (
 type service struct {
 	repo         Repository
 	tokenService Authable
+	PubSub       broker.Broker
 }
 
 func (srv *service) Get(ctx context.Context, req *pb.User, res *pb.Response) error {
@@ -66,6 +70,10 @@ func (srv *service) Create(ctx context.Context, req *pb.User, res *pb.Response) 
 		return err
 	}
 	res.User = req
+
+	if err := srv.publishEvent(req); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -84,6 +92,29 @@ func (srv *service) ValidateToken(ctx context.Context, req *pb.Token, res *pb.To
 	}
 
 	res.Valid = true
+
+	return nil
+}
+
+func (srv *service) publishEvent(user *pb.User) error {
+	// Marshal to JSON string
+	body, err := json.Marshal(user)
+	if err != nil {
+		return err
+	}
+
+	// Create a broker message
+	msg := &broker.Message{
+		Header: map[string]string{
+			"id": user.Id,
+		},
+		Body: body,
+	}
+
+	// Publish message to broker
+	if err := srv.PubSub.Publish(topic, msg); err != nil {
+		log.Printf("[pub] failed: %v", err)
+	}
 
 	return nil
 }

@@ -4,3 +4,6 @@ consignment-service/consignment-service
 user-cli/user-cli
 user-service/user-service
 vessel-service/vessel-service
+email-service/email-service
+vendor
+.vscode/
